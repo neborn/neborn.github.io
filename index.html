@@ -2,29 +2,132 @@
 <html>
   <head>
     <title>Nate Eborn</title>
+    <style>
+      /* reset */
+      body, h1, h2, ul {
+        margin: 0;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      /* defaults */
+      a {
+        text-decoration: none;
+      }
+
+      a, a:visited, a:active {
+        text-decoration: none;
+        color: #1177d3;
+      }
+
+      a:hover {
+        color: #004493;
+      }
+
+      body {
+        font-family: sans-serif;
+      }
+
+      /* content */
+      header {
+        background-color: #666;
+        padding: 20px 20px;
+      }
+
+      h1 {
+        font-size: 3em;
+        color: #fff;
+      }
+
+      section {
+        padding: 0 20px;
+      }
+
+      h2 {
+        font-size: 2em;
+        padding: 10px 0;
+        color: #333;
+      }
+
+      ul {
+        font-size: 1.5em;
+      }
+
+      /* link list */
+      li {
+        display: inline-block;
+        transition: border 0.3s;
+        border-bottom: 0 solid #1177d3;
+      }
+
+      li a, li a:visited {
+        color: #999;
+        transition: color 0.3s;
+      }
+
+      li + li {
+        margin-left: 5px;
+      }
+
+      li:hover {
+        border-bottom-width: 5px;
+      }
+
+      .lnkd:hover {
+        border-bottom-color: #0976b4;
+      }
+
+      .lnkd:hover a {
+        color: #0976b4;
+      }
+
+      .twtr:hover {
+        border-bottom-color: #55acee;
+      }
+
+      .twtr:hover a {
+        color: #55acee;
+      }
+
+      .gthb:hover {
+        border-bottom-color: #333;
+      }
+
+      .gthb:hover a {
+        color: #333;
+      }
+    </style>
   </head>
   <body>
-  <h1>Nate Eborn</h1>
-  <h2>Me on the web</h2>
-  <ul>
-    <li>
-      <a href="http://www.linkedin.com/in/nateeborn/">LinkedIn</a>
-    </li>
-    <li>
-      <a href="https://twitter.com/nateeborn">Twitter</a>
-    </li>
-    <li>
-      <a href="https://github.com/neborn">GitHub</a>
-    </li>
+  <header>
+    <h1>Nate Eborn</h1>
+  </header>
+  <section>
+    <h2>on the web</h2>
+    <ul>
+      <li class="lnkd">
+        <a href="http://www.linkedin.com/in/nateeborn/">LinkedIn</a>
+      </li>
+      <li class="twtr">
+        <a href="https://twitter.com/nateeborn">Twitter</a>
+      </li>
+      <li class="gthb">
+        <a href="https://github.com/neborn">GitHub</a>
+      </li>
+    </ul>
+  </section>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  
+
     ga('create', 'UA-50925153-1', 'neborn.github.io');
     ga('send', 'pageview');
-  
+
   </script>
   </body>
 </html>
