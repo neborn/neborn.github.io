@@ -86,6 +86,7 @@
         border-bottom: 0 solid #888;
       }
       li a:hover, li a:focus {
+        outline: 0;
         border-bottom-width: 5px;
       }
       .lnkd:hover, .lnkd:focus {
@@ -109,9 +110,24 @@
         overflow: hidden; /*clearfix*/
       }
       .cell {
+        /* button overrides */
+        border: 0;
+        margin: 0;
+        padding: 0;
+        background: transparent;
+        /* end overrides */
         float: left;
+        box-sizing: border-box;
         height: 20px;
         width: 20px;
+        overflow: hidden;
+      }
+      .cell:focus {
+        outline: none;
+        border: 2px dotted #333;
+      }
+      .cell::-moz-focus-inner {
+        border: 0;
       }
       .cell:nth-child(3n+1) {
         clear: left;
@@ -139,8 +155,8 @@
         // https://kuler.adobe.com/PANDURO-color-theme-3872190/
         var COLORS = ['#FF4444','#FFBB33','#99CC00','#33B5E5','#AA66CC'],
         h1 = document.getElementsByTagName('h1')[0],
-        cell = document.createElement('SPAN'),
-        parent = cell.cloneNode(),
+        cell = document.createElement('BUTTON'),
+        parent = document.createElement('SPAN'),
         cells = [],
         length = COLORS.length,
         i, n, rand, newCell;
