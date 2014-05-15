@@ -134,38 +134,40 @@
       </ul>
     </section>
     <script>
-      // The color theme is PANDURO by info
-      // https://kuler.adobe.com/PANDURO-color-theme-3872190/
-      var COLORS = ['#FF4444','#FFBB33','#99CC00','#33B5E5','#AA66CC'],
-      h1 = document.getElementsByTagName('h1')[0],
-      cell = document.createElement('SPAN'),
-      parent = cell.cloneNode(),
-      cells = [],
-      length = COLORS.length,
-      i, n, rand, newCell;
+      (function(){
+        // The color theme is PANDURO by info
+        // https://kuler.adobe.com/PANDURO-color-theme-3872190/
+        var COLORS = ['#FF4444','#FFBB33','#99CC00','#33B5E5','#AA66CC'],
+        h1 = document.getElementsByTagName('h1')[0],
+        cell = document.createElement('SPAN'),
+        parent = cell.cloneNode(),
+        cells = [],
+        length = COLORS.length,
+        i, n, rand, newCell;
 
-      cell.className = 'cell';
-      parent.className = 'parent';
+        cell.className = 'cell';
+        parent.className = 'parent';
 
-      // create a cloneable cell for each color
-      for(i = 0; i < length; i++) {
-        cells.push(cell.cloneNode());
-        cells[i].style.backgroundColor = COLORS[i];
-      }
+        // create a cloneable cell for each color
+        for(i = 0; i < length; i++) {
+          cells.push(cell.cloneNode());
+          cells[i].style.backgroundColor = COLORS[i];
+        }
 
-      // generate the cells and add them to parent
-      for(i = 0; i < 9; i += 1) {
-        n = Math.floor(Math.random() * length);
-        newCell = cells[n].cloneNode();
-        newCell.addEventListener('click', (function(n){
-          return function(){
-            this.style.backgroundColor = COLORS[n = (n + 1) % length];
-          };
-        }(n)));
-        parent.appendChild(newCell);
-      }
+        // generate the cells and add them to parent
+        for(i = 0; i < 9; i += 1) {
+          n = Math.floor(Math.random() * length);
+          newCell = cells[n].cloneNode();
+          newCell.addEventListener('click', (function(n){
+            return function(){
+              this.style.backgroundColor = COLORS[n = (n + 1) % length];
+            };
+          }(n)));
+          parent.appendChild(newCell);
+        }
 
-      h1.appendChild(parent);
+        h1.appendChild(parent);
+      }());
     </script>
     <!-- Google Analytics -->
     <script>
