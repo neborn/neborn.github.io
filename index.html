@@ -140,10 +140,10 @@
           <a class="lnkd" href="http://www.linkedin.com/in/nateeborn/">LinkedIn</a>
         </li>
         <li>
-          <a class="twtr" href="https://twitter.com/nateeborn">Twitter</a>
+          <a class="twtr" href="http://twitter.com/nateeborn">Twitter</a>
         </li>
         <li>
-          <a class="gthb" href="https://github.com/neborn">GitHub</a>
+          <a class="gthb" href="http://github.com/neborn">GitHub</a>
         </li>
       </ul>
     </section>
@@ -152,10 +152,11 @@
         // The color theme is PANDURO by info
         // https://kuler.adobe.com/PANDURO-color-theme-3872190/
         var COLORS = ['#FF4444','#FFBB33','#99CC00','#33B5E5','#AA66CC'],
+        SIDE = 3,
         h1 = document.getElementsByTagName('h1')[0],
         cell = document.createElement('BUTTON'),
         parent = document.createElement('SPAN'),
-        cells = [],
+        cloneables = [],
         length = COLORS.length,
         i, n, rand, newCell;
 
@@ -164,19 +165,49 @@
 
         // create a cloneable cell for each color
         for(i = 0; i < length; i++) {
-          cells.push(cell.cloneNode());
-          cells[i].style.backgroundColor = COLORS[i];
+          cloneables.push(cell.cloneNode());
+          cloneables[i].style.backgroundColor = COLORS[i];
         }
 
         // generate the cells and add them to parent
-        for(i = 0; i < 9; i += 1) {
+        for(i = 0; i < SIDE * SIDE; i += 1) {
           n = Math.floor(Math.random() * length);
-          newCell = cells[n].cloneNode();
-          newCell.addEventListener('click', (function(n){
+          newCell = cloneables[n].cloneNode();
+          newCell.addEventListener('click', (function changeBackground(n){
             return function(){
               this.style.backgroundColor = COLORS[n = (n + 1) % length];
             };
           }(n)));
+          newCell.addEventListener('keyup', (function handlKeypress(i){
+            return function(evt){
+              var keyCode = evt.keyCode,
+              cells = parent.childNodes;
+
+              // fail quickly
+              if (keyCode < 37 || keyCode > 40) return;
+              
+              switch(keyCode){
+              case 37:
+                // left
+                if (i % SIDE != 0) cells[i - 1].focus();
+                break;
+              case 38:
+                // up
+                if (i >= SIDE) cells[i - SIDE].focus();
+                break;
+              case 39:
+                // right
+                if (i % SIDE != SIDE - 1) cells[i + 1].focus();
+                break;
+              case 40:
+                // down
+                if (i / SIDE < SIDE - 1) cells[i + SIDE].focus();
+                break;
+              default:
+                break;
+              }
+            };
+          }(i)));
           parent.appendChild(newCell);
         }
 
